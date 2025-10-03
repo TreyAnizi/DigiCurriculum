@@ -3,6 +3,7 @@ import { MongoMemoryServer } from "mongodb-memory-server";
 import express from "express";
 import cookieParser from "cookie-parser";
 import adminRouter from "../../src/routes/adminRoutes.js";
+import router from "../../src/routes/usersRoutes.js";
 import { jest } from "@jest/globals"; 
 
 export let app;
@@ -28,7 +29,9 @@ beforeAll(async () => {
   app.use(express.json());
   app.use(cookieParser());
   app.use("/", adminRouter);
-}, 30000); // Timeout for beforeAll
+  app.use("/", router);
+}, 30000);
+   
 
 afterAll(async () => {
   try {

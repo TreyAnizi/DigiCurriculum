@@ -8,7 +8,9 @@
     "dev": "nodemon index.js",
     "start": "nodemon ./index.js",
    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
-    "test:admin": "node --experimental-vm-modules --no-warnings node_modules/jest/bin/jest.js tests/integration/admin --watch"
+    "test:admin": "node --experimental-vm-modules --no-warnings node_modules/jest/bin/jest.js tests/integration/admin --watch",
+    "test:users": "npm test -- tests/integration/users"
+   
    
   },
   "author": "",
