@@ -80,7 +80,7 @@ describe("Admin Endpoints", () => {
   describe("POST /admin/auth/login", () => {
     it("should login successfully with valid credentials", async () => {
       const response = await request(app).post("/admin/auth/login").send({
-        email: "existing@admin.com", // Use the email from beforeEach
+        email: "existing@admin.com",  
         password: "Password123",
       });
 

@@ -2,12 +2,18 @@ import mongoose from "mongoose";
 import { MongoMemoryServer } from "mongodb-memory-server";
 import express from "express";
 import cookieParser from "cookie-parser";
+import nodemailer from "nodemailer";
 import adminRouter from "../../src/routes/adminRoutes.js";
 import router from "../../src/routes/usersRoutes.js";
 import { jest } from "@jest/globals"; 
 
 export let app;
 let mongoServer;
+
+// Mock nodemailer before any tests run
+nodemailer.createTransport = () => ({
+  sendMail: async () => ({ messageId: "test-message-id" }),
+});
 
 
 beforeAll(async () => {
@@ -28,8 +34,8 @@ beforeAll(async () => {
   app = express();
   app.use(express.json());
   app.use(cookieParser());
-  app.use("/", adminRouter);
-  app.use("/", router);
+  app.use(adminRouter);
+  app.use(router);
 }, 30000);
    
 
