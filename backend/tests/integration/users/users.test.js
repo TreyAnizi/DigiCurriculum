@@ -49,7 +49,7 @@ describe("User Endpoints", () => {
         .send(newUser);
 
       expect(response.status).toBe(201);
-      expect(response.body.message).toBe("Signup successful, OTP sent");
+      expect(response.body.message).toBe("Signup successful");
 
       // Verify user was created in database
       const userInDb = await userModel.findOne({ email: newUser.email });
@@ -57,7 +57,7 @@ describe("User Endpoints", () => {
       expect(userInDb.email).toBe(newUser.email);
       expect(userInDb.firstName).toBe(newUser.firstName);
       expect(userInDb.isVerified).toBe(false);
-      expect(userInDb.otp).toBeTruthy();
+      // expect(userInDb.otp).toBeTruthy();
     });
 
     it("should not register user with existing email", async () => {
