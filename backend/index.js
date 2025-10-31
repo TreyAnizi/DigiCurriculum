@@ -18,6 +18,7 @@ import lessonRoutes from "./src/routes/lessonPlanRoutes.js";
 import searchRoutes from "./src/routes/searchRoutes.js";
 import statisticsRouter from "./src/routes/statisticsRoutes.js";
 import router from "./src/routes/usersRoutes.js";
+import chatRouter from "./src/service/chat.route.js";
 
 dotenv.config();
 const app = express();
@@ -78,6 +79,7 @@ app.use(assessmentRoutes);
 app.use(lessonRoutes);
 app.use(statisticsRouter);
 app.use(router);
+app.use(chatRouter);
 
 app.listen(PORT, () => {
   console.log(`The server is running! on ${PORT}`);
